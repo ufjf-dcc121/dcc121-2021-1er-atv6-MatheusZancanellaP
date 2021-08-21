@@ -475,7 +475,10 @@
         const celulas = document.querySelectorAll("td");
         for (let c = 0; c < celulas.length-1; c++)
         {
-            celulas[c].classList.add("parede");
+          if(!celulas[c].classList.contains('orc') && !celulas[c].classList.contains('tesouro') && !celulas[c].classList.contains('parede'))
+            {
+                celulas[c].classList.add("parede");
+            }
         }
     </script>
   </body>
