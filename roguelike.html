@@ -473,39 +473,34 @@
     </table>
     <script>
         const celulas = document.querySelectorAll("td");
-        for (let c = 0; c < celulas.length-1; c++)
-        {
-          celulas[c].addEventListener('click', divClick, false);
-            if(!celulas[c].classList.contains('orc') && !celulas[c].classList.contains('tesouro') && !celulas[c].classList.contains('parede') && !celulas[c].classList.contains("tesouro", "parede"))
-            {
-                celulas[c].classList.add("parede");
-            }
+      for (let i = 0; i < celulas.length - 1; i++) {
+        celulas[i].addEventListener("click", tdClick, false);
+        if (celulas[i].className == "") {
+          celulas[i].classList.add("parede");
+        }
+      }
+
+      function tdClick(event) {
+        let target = event.target;
+        console.log(target.className);
+
+        if (target.classList.contains("parede")) {
+          target.classList.remove("parede");
+        } else if (target.className == "") {
+          target.classList.add("orc");
+          target.innerText = "O";
+        } else if (target.classList.contains("orc")) {
+          target.classList.add("tesouro");
+          target.innerText = "T";
+          target.classList.remove("orc");
+        } else if (target.classList.contains("tesouro")) {
+          target.classList.add("parede");
+          target.classList.remove("tesouro");
+          target.innerText = "";
         }
 
-        function divClick(event){
-            console.log("Click!");
-            let target = event.target;
-            console.log("Classe: ", target.classList.value);
-            if(target.classList.contains('parede'))
-            {
-                target.classList.remove('parede');
-            }
-            else if(target.classList.contains('orc'))
-            {
-                target.classList.add('tesouro');
-                target.classList.remove('orc');
-            }
-            else if(target.classList.contains('tesouro'))
-            {
-                target.classList.add('parede');
-                target.classList.remove('tesouro');
-            }
-            else if(!target.classList.contains('parede') && !target.classList.contains('orc') && !target.classList.contains('tesouro'))
-            {
-                target.classList.add('orc');
-            }
-            console.log("Nova classe: ", target.classList.value);
-        }
+        console.log(target.className);
+      }
     </script>
   </body>
 </html>
