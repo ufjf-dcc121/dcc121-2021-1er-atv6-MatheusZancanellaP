@@ -475,10 +475,17 @@
         const celulas = document.querySelectorAll("td");
         for (let c = 0; c < celulas.length-1; c++)
         {
-          if(!celulas[c].classList.contains('orc') && !celulas[c].classList.contains('tesouro') && !celulas[c].classList.contains('parede'))
+          celulas[c].addEventListener('click', divClick, false);
+            if(!celulas[c].classList.contains('orc') && !celulas[c].classList.contains('tesouro') && !celulas[c].classList.contains('parede') && !celulas[c].classList.contains("tesouro", "parede"))
             {
                 celulas[c].classList.add("parede");
             }
+        }
+
+        function divClick(event){
+            console.log("Click!");
+            let target = event.target;
+            console.log(target.classList.value);
         }
     </script>
   </body>
